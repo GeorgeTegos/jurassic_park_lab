@@ -1,7 +1,7 @@
 class Park {
-    constructor(name, ticket_price, dinosaurs = []) {
+    constructor(name, ticketPrice, dinosaurs = []) {
         this.name = name
-        this.ticket_price = ticket_price
+        this.ticketPrice = ticketPrice
         this.dinosaurs = dinosaurs
     }
     addDinosaur(dinosaur) {
@@ -22,6 +22,27 @@ class Park {
         }
         return dinosaurToReturn
     }
+
+    findSpecie(specieToFind){
+        let arrayToReturn =[]
+        for (let i = 0; i < this.dinosaurs.length; i++){
+            if (specieToFind === this.dinosaurs[i].species){
+                arrayToReturn.push(this.dinosaurs[i])
+            }
+        }
+        return arrayToReturn
+    }
+
+    visitorsPerDay(){
+        let total = 0
+        for (let dinosaur of this.dinosaurs){
+            total += dinosaur.guestsAttractedPerDay
+        }
+        return total
+    }   
+
+
+
 }
 
 module.exports = Park

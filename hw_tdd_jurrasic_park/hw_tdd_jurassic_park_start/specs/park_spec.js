@@ -19,7 +19,7 @@ describe('Park', function(){
   });
 
   it('should have a ticket price', function() {
-    const actual = park.ticket_price
+    const actual = park.ticketPrice
     assert.strictEqual(100, actual) 
   });
     
@@ -32,7 +32,7 @@ describe('Park', function(){
 
   it('should be able to add a dinosaur to its collection', function() {
     const actual= park.addDinosaur(dinosaur4)
-    assert.strictEqual(1, park.dinosaurs.length)
+    assert.deepStrictEqual(1, park.dinosaurs.length)
   });
   
   it('should be able to remove a dinosaur from its collection', function() {
@@ -48,9 +48,20 @@ describe('Park', function(){
     assert.strictEqual(dinosaur4, actual)
   });
 
-  it('should be able to find all dinosaurs of a particular species');
+  it('should be able to find all dinosaurs of a particular species', function(){
+    park.addDinosaur(dinosaur4)
+    park.addDinosaur(dinosaur5)
+    const actual = park.findSpecie("Yoshi")
+    assert.strictEqual("Yoshi",actual[0].species)
+  });
 
-  it('should be able to calculate the total number of visitors per day');
+  it('should be able to calculate the total number of visitors per day', function(){
+    park.addDinosaur(dinosaur4)
+    park.addDinosaur(dinosaur5)
+    const actual = park.visitorsPerDay()
+    assert.strictEqual(actual,1701)
+
+  });
 
   it('should be able to calculate the total number of visitors per year');
 
